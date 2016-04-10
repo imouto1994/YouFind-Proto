@@ -36,6 +36,7 @@ module.exports = {
   // Configure Webpack Dev Server
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
+    historyApiFallback: true,
     hot: true,
     inline: true,
     progress: true,

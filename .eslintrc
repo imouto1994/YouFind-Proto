@@ -20,9 +20,9 @@
     "react/sort-comp": [2, { order: [
       "/fetchData/",
       "lifecycle",
-      "/^_on.+$/",
+      "/^on.+$/",
       "render",
-      "/^_render.+$/",
+      "/^render.+$/",
       "everything-else"
     ]}],
     "react/jsx-boolean-value": 0,

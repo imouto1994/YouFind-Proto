@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
-const CLASS_NAME = 'yf-app';
+const CLASS_NAME = 'yf-search';
 
-class App extends Component {
+class Search extends Component {
   render() {
     return (
       <div className={ CLASS_NAME }>
+
       </div>
     );
   }
 }
 
-export default App;
+export default Search;

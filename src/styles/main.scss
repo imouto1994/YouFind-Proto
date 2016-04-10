@@ -1,5 +1,6 @@
 // Import vendors
 @import 'vendors/bootstrap';
+@import 'vendors/breakpoint';
 
 // Import variables
 @import 'constants';
@@ -14,5 +15,9 @@
 @import 'root';
 
 // Import styles for components
-@import 'components/App';
+@import 'components/Root';
 @import 'components/Home';
+@import 'components/App';
+@import 'components/Search';
+@import 'components/Register';
+@import 'components/Login';

@@ -11,11 +11,11 @@ class Home extends Component {
             <img className={ `${CLASS_NAME}-logo-image` } src="http://i.imgur.com/4ewFqRE.png" />
             <span className={ `${CLASS_NAME}-logo-title` }>YouFind</span>
           </div>
-          <h3>Please choose your user type</h3>
+          <h3>What kind of users are you?</h3>
           <button className="btn btn-primary btn-block btn-lg">
             CASUAL USER
           </button>
-          <h4>OR</h4>
+          <h4>or</h4>
           <button className="btn btn-primary btn-block btn-lg">
             PROFESSIONAL USER
           </button>
