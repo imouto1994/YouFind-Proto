@@ -1,0 +1,23 @@
+.yf-app-search-input {
+  width: 400px !important;
+
+  @include breakpoint($max-tablet) {
+    width: 250px !important;
+  }
+
+  @include breakpoint($max-mobile) {
+    width: 100% !important;
+  }
+}
+
+.yf-app-navbar-brand-title {
+  @include breakpoint($max-tablet) {
+    display: none;
+  }  
+}
+
+.yf-app-navbar-login,
+.yf-app-navbar-register,
+.yf-app-navbar-dropdown {
+  margin-right: 15px;
+}

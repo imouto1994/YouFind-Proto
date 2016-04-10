@@ -11,7 +11,7 @@ class Login extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     const { history } = this.props;
-    history.pushState(null, '/search');
+    history.pushState(null, '/u/search');
   };
 
   render() {

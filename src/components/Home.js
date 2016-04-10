@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 const CLASS_NAME = 'yf-home';
 
@@ -12,13 +13,13 @@ class Home extends Component {
             <span className={ `${CLASS_NAME}-logo-title` }>YouFind</span>
           </div>
           <h3>What kind of users are you?</h3>
-          <button className="btn btn-primary btn-block btn-lg">
+          <Link className="btn btn-primary btn-block btn-lg" to="/search">
             CASUAL USER
-          </button>
+          </Link>
           <h4>or</h4>
-          <button className="btn btn-primary btn-block btn-lg">
+          <Link className="btn btn-primary btn-block btn-lg" to="/login">
             PROFESSIONAL USER
-          </button>
+          </Link>
         </div>
       </div>
     );
