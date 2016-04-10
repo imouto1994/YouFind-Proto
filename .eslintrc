@@ -1,0 +1,48 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    /** ES5 **/
+    "strict": 0,
+    "no-var": 0,
+    "prefer-const": 0,
+    "no-param-reassign": [2, { "props": false }],
+
+    /** ES6 **/
+    "max-len": [1, 120, 2, {ignoreComments: true}],
+    "camelcase": 1,
+    "object-curly-spacing": [2, "always"],
+    "comma-dangle": [2, "never"],
+    "brace-style": 2,
+    "id-length": 0,
+    "new-cap": 0,
+    "no-else-return": 0,
+    "func-names": 0,
+    "react/sort-comp": [2, { order: [
+      "/fetchData/",
+      "lifecycle",
+      "/^_on.+$/",
+      "render",
+      "/^_render.+$/",
+      "everything-else"
+    ]}],
+    "react/jsx-boolean-value": 0,
+    "react/jsx-curly-spacing": [2, "always"],
+    "react/jsx-closing-bracket-location": [2, 'after-props'],
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-undef": 2,
+    "react/no-direct-mutation-state": 2,
+    "react/no-multi-comp": 0,
+    "react/no-did-mount-set-state": 0,
+    "react/jsx-no-bind": 0,
+    "react/prefer-stateless-function": 0
+  },
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "mongo": true,
+    "mocha": true
+  }
+}
