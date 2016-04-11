@@ -54,6 +54,13 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
 
+    // Define environment
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
+      }
+    }),
+
     // Optimizations
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin()

@@ -40,6 +40,13 @@ module.exports = {
     // Prevent inline css require in entry chunk
     new ExtractTextPlugin('app.css'),
 
+    // Define environment
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+
     // Ignore dev configuration
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
 
