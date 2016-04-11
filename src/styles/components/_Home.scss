@@ -27,3 +27,9 @@
 .yf-home-form-title {
   color: $yf-primary;
 }
+
+.yf-home-pro {
+  @include breakpoint($max-mobile) {
+    margin-top: 15px;
+  }
+}

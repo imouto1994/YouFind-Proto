@@ -11,15 +11,20 @@ class Login extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     const { history } = this.props;
-    history.pushState(null, '/u/search');
+    history.push('/u/search');
   };
 
   render() {
     return (
       <div className={ CLASS_NAME }>
-        <div className={ `${CLASS_NAME}-card panel panel-primary` }>
+        <div className={ `${CLASS_NAME}-card panel` }>
           <div className={ `${CLASS_NAME}-card-heading panel-heading` }>
-            Login
+            <Link to="/">
+              <img className={ `${CLASS_NAME}-card-heading-image` }
+                src="http://i.imgur.com/4ewFqRE.png"
+                height="50" />
+            </Link>
+            <hr />
           </div>
           <div className={ `${CLASS_NAME}-card-body panel-body` }>
             <form className={ `${CLASS_NAME}-form` } onSubmit={ this.onFormSubmit }>
@@ -42,7 +47,7 @@ class Login extends Component {
               </button>
               <div className={ `${CLASS_NAME}-other-links` }>
                 <Link to="/register">
-                  Are you new user?
+                  New User?
                 </Link>
               </div>
             </form>

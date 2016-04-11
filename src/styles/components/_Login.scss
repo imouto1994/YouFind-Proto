@@ -1,5 +1,6 @@
 .yf-login {
   display: flex;
+  background: $yf-primary;
   min-height: 100%;
   align-items: center;
   justify-content: center;
@@ -18,8 +19,9 @@
 }
 
 .yf-login-card-heading {
-  padding-top: .75em;
-  padding-bottom: .75em;
+  padding-top: 15px;
+  padding-bottom: 0;
+  text-align: center;
   color: #fff;
   font-weight: 500;
   font-size: 2.5em;

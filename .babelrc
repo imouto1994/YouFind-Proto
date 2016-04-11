@@ -1,4 +1,9 @@
 {
   plugins: ['add-module-exports'],
-  presets: ['es2015', 'stage-0', 'react']
+  presets: ['es2015', 'stage-0', 'react'],
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    }
+  }
 }

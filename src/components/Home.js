@@ -8,18 +8,24 @@ class Home extends Component {
     return (
       <div className={ CLASS_NAME }>
         <div className={ `${CLASS_NAME}-selection` }>
-          <div className={ `${CLASS_NAME}-logo` }>
+          <div className={ `${CLASS_NAME}-logo yf-margin-bottom-45` }>
             <img className={ `${CLASS_NAME}-logo-image` } src="http://i.imgur.com/4ewFqRE.png" />
-            <span className={ `${CLASS_NAME}-logo-title` }>YouFind</span>
+            <span className={ `${CLASS_NAME}-logo-title yf-margin-left-15` }>YouFind</span>
           </div>
-          <h3>What kind of users are you?</h3>
-          <Link className="btn btn-primary btn-block btn-lg" to="/search">
-            CASUAL USER
-          </Link>
-          <h4>or</h4>
-          <Link className="btn btn-primary btn-block btn-lg" to="/login">
-            PROFESSIONAL USER
-          </Link>
+          <h4>What kind of user are you?</h4>
+          <div className="row">
+            <div className="col-sm-6">
+              <Link className={ `btn btn-primary btn-block btn-lg ${CLASS_NAME}-casual` }
+                to="/search">
+                CASUAL USER
+              </Link>
+            </div>
+            <div className="col-sm-6">
+              <Link className={ `btn btn-primary btn-block btn-lg ${CLASS_NAME}-pro` } to="/login">
+                PROFESSIONAL USER
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     );

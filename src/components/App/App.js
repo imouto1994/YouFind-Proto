@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import classnames from 'classnames';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
@@ -21,7 +22,8 @@ class App extends Component {
   };
 
   state = {
-    isMenuOpened: false
+    isMenuOpened: false,
+    isSearched: false
   };
 
   onMenuToggle = () => {
@@ -32,10 +34,21 @@ class App extends Component {
 
   onSearchFormSubmit = e => {
     e.preventDefault();
+    this.setState({
+      isSearched: true
+    });
   };
 
-  onUploadButtonClick = () => {
+  onUploadButtonClick = (e) => {
+    e.preventDefault();
+    const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
+    fileInput.click();
+  };
 
+  onFileUpload = () => {
+    this.setState({
+      isSearched: true
+    });
   };
 
   render() {
@@ -99,7 +112,8 @@ class App extends Component {
   }
 
   renderBody() {
-    const { children } = this.props;
+    const { children, isUser } = this.props;
+    const { isSearched } = this.state;
     const contentClasses = [
       'container-fluid',
       `${CLASS_NAME}-content`
@@ -107,7 +121,7 @@ class App extends Component {
 
     return (
       <div className={ classnames(contentClasses) }>
-        { children }
+        { React.cloneElement(children, { isUser, isSearched }) }
       </div>
     );
   }
@@ -140,9 +154,11 @@ class App extends Component {
             </MenuItem>
           </LinkContainer>
           <MenuItem divider />
-          <MenuItem eventKey="3">
-            Log Out
-          </MenuItem>
+          <LinkContainer to="/">
+            <MenuItem eventKey="3">
+              Log Out
+            </MenuItem>
+          </LinkContainer>
         </NavDropdown>
       </ul>
     );
@@ -165,10 +181,14 @@ class App extends Component {
               className={ `${CLASS_NAME}-search-input form-control` }
               placeholder="Please input your query text here..." />
             <div className="input-group-btn">
-              <button className="btn btn-link" onClick={ this.onUploadButtonClick }>
+              <input type="file"
+                ref="fileInput"
+                style={ { display: 'none' } }
+                onChange={ this.onFileUpload } />
+              <div className="btn btn-link btn-link-primary" onClick={ this.onUploadButtonClick }>
                 Upload
-              </button>
-              <button type="submit" className="btn btn-link">
+              </div>
+              <button type="submit" className="btn btn-primary">
                 Search
               </button>
             </div>

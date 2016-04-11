@@ -1,3 +1,7 @@
+.yf-app {
+  height: 100%;
+}
+
 .yf-app-search-input {
   width: 400px !important;
 
@@ -20,4 +24,9 @@
 .yf-app-navbar-register,
 .yf-app-navbar-dropdown {
   margin-right: 15px;
+}
+
+.yf-app-content {
+  padding-top: 64px;
+  height: 100%;
 }
