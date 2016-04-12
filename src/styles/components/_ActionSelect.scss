@@ -1,0 +1,12 @@
+.yf-action-select {
+  min-height: 100%;
+  padding: 30px 15px;
+
+  .dropdown {
+    width: 100%;
+
+    @include breakpoint($max-mobile) {
+      margin-bottom: 30px;
+    }
+  }
+}

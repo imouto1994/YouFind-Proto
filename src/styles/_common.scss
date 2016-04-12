@@ -38,8 +38,14 @@
   margin-bottom: 45px;
 }
 
-.xs-hidden {
+.yf-min-tablet-visible {
   @include breakpoint($max-mobile) {
     display: none;
   }
+}
+
+.yf-max-mobile-visible {
+  @include breakpoint($min-tablet) {
+    display: none;
+  } 
 }

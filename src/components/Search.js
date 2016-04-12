@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 import Utility from '../utils';
 import Feedback from './Feedback';
+import VideoCardHorizontal from './VideoCardHorizontal';
+import VideoCard from './VideoCard';
 
 const CLASS_NAME = 'yf-search';
 
@@ -64,9 +67,9 @@ class Search extends Component {
         {
           isUser &&
           <div className="clearfix">
-            <button className="btn btn-primary btn-lg pull-right">
+            <Link to="/u/actionSelect" className="btn btn-primary pull-right">
               TAKE ACTIONS
-            </button>
+            </Link>
           </div>
         }
         <Feedback toggle={ toggleFeedback } />
@@ -92,7 +95,7 @@ class Search extends Component {
             <MenuItem eventKey="2">Date (Newest)</MenuItem>
             <MenuItem eventKey="3">Date (Oldest)</MenuItem>
             <MenuItem eventKey="4">Popularity</MenuItem>
-        </DropdownButton>
+          </DropdownButton>
         </div>
       </div>
     );
@@ -113,7 +116,7 @@ class Search extends Component {
         <div className="col-xs-11 col-sm-5">
           <h5 className={ `${CLASS_NAME}-results-header-title` }>Videos Found</h5>
         </div>
-        <div className="col-sm-6 xs-hidden">
+        <div className="col-sm-6 yf-min-tablet-visible">
           <h5 className={ `${CLASS_NAME}-results-header-title pull-right` }>Is this what you were looking for?</h5>
         </div>
       </div>
@@ -137,22 +140,11 @@ class Search extends Component {
             </label>
           </div>
         </div>
-        <div className="col-xs-11 col-sm-3">
-          <img src={ Utility.getThumbnailUrl(video.id) } width="100%" />
+        <div className="col-xs-11 col-sm-7 yf-min-tablet-visible">
+          <VideoCardHorizontal video={ video } />
         </div>
-        <div className={ `col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-4 ${CLASS_NAME}-result-info` }>
-          <div className={ `${CLASS_NAME}-result-title` }>
-            { video.title }
-          </div>
-          <div className={ `${CLASS_NAME}-result-host` }>
-            { `Hosted on ${video.host}` }
-          </div>
-          <div className={ `${CLASS_NAME}-result-date` }>
-            { `Uploaded ${video.date}` }
-          </div>
-          <div className={ `${CLASS_NAME}-result-views` }>
-            { `${Utility.formatNumber(video.views)} views` }
-          </div>
+        <div className="col-xs-11 col-sm-7 yf-max-mobile-visible">
+          <VideoCard video={ video } />
         </div>
         <div className="col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-4">
           <div className="col-xs-6">

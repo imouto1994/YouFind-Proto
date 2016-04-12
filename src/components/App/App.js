@@ -145,17 +145,17 @@ class App extends Component {
     ];
 
     return (
-      <ul className="nav navbar-nav navbar-right" key={ 1 }>
+      <ul className="nav navbar-nav navbar-right">
         <NavDropdown className={ classnames(dropDownClasses) }
           title={ this.renderUserAvatar() } id="registeredDropdown">
-          <LinkContainer to="/user">
-            <MenuItem eventKey="2">
+          <LinkContainer to="/u">
+            <MenuItem active={ false } eventKey="1">
               User Panel
             </MenuItem>
           </LinkContainer>
           <MenuItem divider />
           <LinkContainer to="/">
-            <MenuItem eventKey="3">
+            <MenuItem active={ false } eventKey="2">
               Log Out
             </MenuItem>
           </LinkContainer>

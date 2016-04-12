@@ -16,89 +16,97 @@ export default {
   getVideoLists() {
     return [
       {
-        id: 'dU3r68jWp0w',
-        title: 'New Video',
+        id: 'Tx_lyy4-SeY',
+        title: 'iPhone SE Review!',
         host: 'YouTube',
-        date: '5 months ago',
-        views: '1230000'
+        date: '2 weeks ago',
+        views: '904699'
       },
       {
-        id: 'Cbvqv19Nf0E',
-        title: 'New Video',
-        host: 'Vimeo',
-        date: '4 days ago',
-        views: '8232'
-      },
-      {
-        id: 'QW0h3wUHFuA',
-        title: 'New Video',
-        host: 'DailyMotion',
-        date: '12 hours ago',
-        views: '94212'
-      },
-      {
-        id: 'dU3r68jWp0w',
-        title: 'New Video',
+        id: 'cYo2f7DLKX0',
+        title: 'iPhone SE - Snooze Edition?',
         host: 'YouTube',
-        date: '5 months ago',
-        views: '1230000'
+        date: '5 days ago',
+        views: '2259021'
       },
       {
-        id: 'Cbvqv19Nf0E',
-        title: 'New Video',
-        host: 'Vimeo',
-        date: '4 days ago',
-        views: '8232'
-      },
-      {
-        id: 'QW0h3wUHFuA',
-        title: 'New Video',
-        host: 'DailyMotion',
-        date: '12 hours ago',
-        views: '94212'
-      },
-      {
-        id: 'dU3r68jWp0w',
-        title: 'New Video',
+        id: '-ZWWvL7-tZ4',
+        title: 'iPhone SE: 5 Things Before Buying!',
         host: 'YouTube',
-        date: '5 months ago',
-        views: '1230000'
-      },
-      {
-        id: 'Cbvqv19Nf0E',
-        title: 'New Video',
-        host: 'Vimeo',
-        date: '4 days ago',
-        views: '8232'
-      },
-      {
-        id: 'QW0h3wUHFuA',
-        title: 'New Video',
-        host: 'DailyMotion',
         date: '12 hours ago',
-        views: '94212'
+        views: '1322021'
       },
       {
-        id: 'dU3r68jWp0w',
-        title: 'New Video',
+        id: 'Tx_lyy4-SeY',
+        title: 'iPhone SE Review!',
         host: 'YouTube',
-        date: '5 months ago',
-        views: '1230000'
+        date: '2 weeks ago',
+        views: '904699'
       },
       {
-        id: 'Cbvqv19Nf0E',
-        title: 'New Video',
-        host: 'Vimeo',
-        date: '4 days ago',
-        views: '8232'
+        id: 'cYo2f7DLKX0',
+        title: 'iPhone SE - Snooze Edition?',
+        host: 'YouTube',
+        date: '5 days ago',
+        views: '2259021'
       },
       {
-        id: 'QW0h3wUHFuA',
-        title: 'New Video',
-        host: 'DailyMotion',
+        id: '-ZWWvL7-tZ4',
+        title: 'iPhone SE: 5 Things Before Buying!',
+        host: 'YouTube',
         date: '12 hours ago',
-        views: '94212'
+        views: '1322021'
+      },
+      {
+        id: 'Tx_lyy4-SeY',
+        title: 'iPhone SE Review!',
+        host: 'YouTube',
+        date: '2 weeks ago',
+        views: '904699'
+      },
+      {
+        id: 'cYo2f7DLKX0',
+        title: 'iPhone SE - Snooze Edition?',
+        host: 'YouTube',
+        date: '5 days ago',
+        views: '2259021'
+      },
+      {
+        id: '-ZWWvL7-tZ4',
+        title: 'iPhone SE: 5 Things Before Buying!',
+        host: 'YouTube',
+        date: '12 hours ago',
+        views: '1322021'
+      },
+      {
+        id: 'Tx_lyy4-SeY',
+        title: 'iPhone SE Review!',
+        host: 'YouTube',
+        date: '2 weeks ago',
+        views: '904699'
+      },
+      {
+        id: 'cYo2f7DLKX0',
+        title: 'iPhone SE - Snooze Edition?',
+        host: 'YouTube',
+        date: '5 days ago',
+        views: '2259021'
+      },
+      {
+        id: '-ZWWvL7-tZ4',
+        title: 'iPhone SE: 5 Things Before Buying!',
+        host: 'YouTube',
+        date: '12 hours ago',
+        views: '1322021'
       }
     ];
+  },
+
+  getSelectedVideos() {
+    return [0, 1, 3, 5, 8, 10];
+  },
+
+  getActionVideos() {
+    return [[0, 1, 3], [5, 8], [10]];
   }
 };
