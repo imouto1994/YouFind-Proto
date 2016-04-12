@@ -47,9 +47,6 @@ module.exports = {
       }
     }),
 
-    // Ignore dev configuration
-    new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
-
     // Optimizations
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
