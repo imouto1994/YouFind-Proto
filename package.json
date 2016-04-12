@@ -4,8 +4,8 @@
   "description": "YouFind Prototype",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js --history-api-fallback --progress --colors"
+    "dev": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
+    "build": "NODE_ENV=production webpack --config webpack.config.prod.js --history-api-fallback --progress --colors"
   },
   "keywords": [
     "prototype"
