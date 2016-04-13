@@ -12,17 +12,17 @@ class Home extends Component {
             <img className={ `${CLASS_NAME}-logo-image` } src="http://i.imgur.com/4ewFqRE.png" />
             <span className={ `${CLASS_NAME}-logo-title yf-margin-left-15` }>YouFind</span>
           </div>
-          <h4>What kind of user are you?</h4>
-          <div className="row">
-            <div className="col-sm-6">
-              <Link className={ `btn btn-primary btn-block btn-lg ${CLASS_NAME}-casual` }
+          <h3>What kind of user are you?</h3>
+          <div className="row yf-margin-top-30">
+            <div className="col-sm-offset-2 col-sm-4">
+              <Link className={ `btn btn-primary btn-block btn-xlg ${CLASS_NAME}-casual` }
                 to="/search">
-                CASUAL USER
+                CASUAL
               </Link>
             </div>
-            <div className="col-sm-6">
-              <Link className={ `btn btn-primary btn-block btn-lg ${CLASS_NAME}-pro` } to="/login">
-                PROFESSIONAL USER
+            <div className="col-sm-4">
+              <Link className={ `btn btn-primary btn-block btn-xlg ${CLASS_NAME}-pro` } to="/login">
+                PROFESSIONAL
               </Link>
             </div>
           </div>
