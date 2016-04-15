@@ -7,10 +7,31 @@
   height: 100%;
 }
 
+.yf-video-card-horizontal-thumbnail-container {
+  height: 100%;
+  padding: 0;;
+}
+
 .yf-video-card-horizontal-thumbnail {
   height: 100%;
   background-position: center center;
   background-size: cover;
+}
+
+.yf-video-card-horizontal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity .25s ease;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .yf-video-card-horizontal-title {

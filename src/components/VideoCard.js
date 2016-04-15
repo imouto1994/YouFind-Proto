@@ -6,8 +6,14 @@ const CLASS_NAME = 'yf-video-card';
 
 class VideoCard extends Component {
   static propTypes = {
-    video: PropTypes.object
+    video: PropTypes.object,
+    onClick: PropTypes.func
   }
+
+  onThumbnailClick = () => {
+    const { onClick } = this.props;
+    return onClick && onClick();
+  };
 
   render() {
     const { video } = this.props;
@@ -18,7 +24,9 @@ class VideoCard extends Component {
     return (
       <div className={ `${CLASS_NAME} panel panel-default` }>
         <div className={ `${CLASS_NAME}-body panel-body` }>
-          <div className={ `${CLASS_NAME}-thumbnail` } style={ imageStyle }>
+          <div className={ `${CLASS_NAME}-thumbnail-container` } onClick={ this.onThumbnailClick }>
+            <div className={ `${CLASS_NAME}-thumbnail` } style={ imageStyle } />
+            <div className={ `${CLASS_NAME}-overlay` } />
           </div>
           <div className={ `${CLASS_NAME}-content` }>
             <div className={ `${CLASS_NAME}-title` }>

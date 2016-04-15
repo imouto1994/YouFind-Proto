@@ -17,6 +17,7 @@ export default {
     return [
       {
         id: 'Tx_lyy4-SeY',
+        key: 0,
         title: 'iPhone SE Review!',
         host: 'YouTube',
         date: '2 weeks ago',
@@ -24,6 +25,7 @@ export default {
       },
       {
         id: 'cYo2f7DLKX0',
+        key: 1,
         title: 'iPhone SE - Snooze Edition?',
         host: 'YouTube',
         date: '5 days ago',
@@ -31,6 +33,7 @@ export default {
       },
       {
         id: '-ZWWvL7-tZ4',
+        key: 2,
         title: 'iPhone SE: 5 Things Before Buying!',
         host: 'YouTube',
         date: '12 hours ago',
@@ -38,6 +41,7 @@ export default {
       },
       {
         id: 'Tx_lyy4-SeY',
+        key: 3,
         title: 'iPhone SE Review!',
         host: 'YouTube',
         date: '2 weeks ago',
@@ -45,6 +49,7 @@ export default {
       },
       {
         id: 'cYo2f7DLKX0',
+        key: 4,
         title: 'iPhone SE - Snooze Edition?',
         host: 'YouTube',
         date: '5 days ago',
@@ -52,6 +57,7 @@ export default {
       },
       {
         id: '-ZWWvL7-tZ4',
+        key: 5,
         title: 'iPhone SE: 5 Things Before Buying!',
         host: 'YouTube',
         date: '12 hours ago',
@@ -59,6 +65,7 @@ export default {
       },
       {
         id: 'Tx_lyy4-SeY',
+        key: 6,
         title: 'iPhone SE Review!',
         host: 'YouTube',
         date: '2 weeks ago',
@@ -66,6 +73,7 @@ export default {
       },
       {
         id: 'cYo2f7DLKX0',
+        key: 7,
         title: 'iPhone SE - Snooze Edition?',
         host: 'YouTube',
         date: '5 days ago',
@@ -73,6 +81,7 @@ export default {
       },
       {
         id: '-ZWWvL7-tZ4',
+        key: 8,
         title: 'iPhone SE: 5 Things Before Buying!',
         host: 'YouTube',
         date: '12 hours ago',
@@ -80,6 +89,7 @@ export default {
       },
       {
         id: 'Tx_lyy4-SeY',
+        key: 9,
         title: 'iPhone SE Review!',
         host: 'YouTube',
         date: '2 weeks ago',
@@ -87,6 +97,7 @@ export default {
       },
       {
         id: 'cYo2f7DLKX0',
+        key: 10,
         title: 'iPhone SE - Snooze Edition?',
         host: 'YouTube',
         date: '5 days ago',
@@ -94,6 +105,7 @@ export default {
       },
       {
         id: '-ZWWvL7-tZ4',
+        key: 11,
         title: 'iPhone SE: 5 Things Before Buying!',
         host: 'YouTube',
         date: '12 hours ago',

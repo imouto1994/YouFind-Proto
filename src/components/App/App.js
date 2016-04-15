@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import classnames from 'classnames';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 
 import Utility from '../../utils';
 
@@ -14,7 +13,8 @@ const USER_EMAIL = 'matthew_foo@gmail.com';
 class App extends Component {
   static propTypes = {
     isUser: PropTypes.bool,
-    children: PropTypes.node
+    children: PropTypes.node,
+    history: PropTypes.object
   };
 
   static defaultProps = {
@@ -25,6 +25,11 @@ class App extends Component {
     isMenuOpened: false,
     isSearched: false
   };
+
+  componentDidMount() {
+    const searchInput = ReactDOM.findDOMNode(this.refs.searchInput);
+    searchInput.focus();
+  }
 
   onMenuToggle = () => {
     this.setState({
@@ -49,6 +54,16 @@ class App extends Component {
     this.setState({
       isSearched: true
     });
+  };
+
+  onUserPanelClick = () => {
+    const { history } = this.props;
+    history.push('/u');
+  };
+
+  onLogOutClick = () => {
+    const { history } = this.props;
+    history.push('/');
   };
 
   render() {
@@ -148,17 +163,13 @@ class App extends Component {
       <ul className="nav navbar-nav navbar-right">
         <NavDropdown className={ classnames(dropDownClasses) }
           title={ this.renderUserAvatar() } id="registeredDropdown">
-          <LinkContainer to="/u">
-            <MenuItem active={ false } eventKey="1">
-              User Panel
-            </MenuItem>
-          </LinkContainer>
+          <MenuItem eventKey="1" onClick={ this.onUserPanelClick }>
+            User Panel
+          </MenuItem>
           <MenuItem divider />
-          <LinkContainer to="/">
-            <MenuItem active={ false } eventKey="2">
-              Log Out
-            </MenuItem>
-          </LinkContainer>
+          <MenuItem eventKey="2" onClick={ this.onLogOutClick }>
+            Log Out
+          </MenuItem>
         </NavDropdown>
       </ul>
     );
@@ -178,6 +189,7 @@ class App extends Component {
         <div className="form-group">
           <div className="input-group">
             <input type="text"
+              ref="searchInput"
               className={ `${CLASS_NAME}-search-input form-control` }
               placeholder="Please input your query text here..." />
             <div className="input-group-btn">

@@ -8,6 +8,27 @@
   background-size: cover;
 }
 
+.yf-video-card-thumbnail-container {
+  display: block;
+  position: relative;
+}
+
+.yf-video-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity .25s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .yf-video-card-content {
   padding: 15px 10px;
 }
