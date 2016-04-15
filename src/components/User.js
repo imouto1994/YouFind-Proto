@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Cookies from 'js-cookie';
 
 import Utility from '../utils';
 import VideoCardHorizontal from './VideoCardHorizontal';
@@ -6,13 +7,22 @@ import VideoCard from './VideoCard';
 
 const CLASS_NAME = 'yf-user';
 const videoResults = Utility.getVideoLists();
-const selectedVideos = Utility.getSelectedVideos().map(val => videoResults[val]);
 
 class User extends Component {
+  constructor(props) {
+    super(props);
+    const selected = Cookies.getJSON('confirm') || [];
+    this.state = {
+      selectedVideos: selected.map(val => videoResults[val])
+    };
+  }
+
   render() {
+    const { selectedVideos } = this.state;
+
     return (
       <div className={ CLASS_NAME }>
-        <h4>Submissions History</h4>
+        <h4>Submissions Tracking</h4>
         { selectedVideos.map(this.renderSubmission.bind(this)) }
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
-import { Link } from 'react-router';
 import _ from 'lodash';
+import Cookies from 'js-cookie';
 
 import Utility from '../utils';
 import Feedback from './Feedback';
@@ -16,7 +16,8 @@ const videoResults = Utility.getVideoLists();
 class Search extends Component {
   static propTypes= {
     isUser: PropTypes.bool,
-    isSearched: PropTypes.bool
+    isSearched: PropTypes.bool,
+    history: PropTypes.object
   };
 
   state = {
@@ -78,6 +79,22 @@ class Search extends Component {
     });
   };
 
+  onActionTaken = () => {
+    const { history } = this.props;
+    const { checkboxes, videos } = this.state;
+    const selected = checkboxes
+      .map((isChecked, index) => {
+        if (isChecked) {
+          return videos[index].key;
+        } else {
+          return undefined;
+        }
+      })
+      .filter(v => v || v === 0);
+    Cookies.set('search', selected);
+    history.push('/u/actionSelect');
+  };
+
   render() {
     const { isSearched, isUser } = this.props;
     const { toggleFeedback, togglePreview, selectedPreview, videos } = this.state;
@@ -97,9 +114,9 @@ class Search extends Component {
         {
           isUser &&
           <div className="clearfix">
-            <Link to="/u/actionSelect" className="btn btn-primary pull-right">
+            <button onClick={ this.onActionTaken } className="btn btn-primary pull-right">
               TAKE ACTION
-            </Link>
+            </button>
           </div>
         }
         <Feedback toggle={ toggleFeedback } />
