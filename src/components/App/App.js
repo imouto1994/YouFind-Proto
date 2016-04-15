@@ -39,6 +39,10 @@ class App extends Component {
 
   onSearchFormSubmit = e => {
     e.preventDefault();
+    const { history, isUser } = this.props;
+    if (isUser) {
+      history.push('/u/search');
+    }
     this.setState({
       isSearched: true
     });
@@ -50,7 +54,13 @@ class App extends Component {
     fileInput.click();
   };
 
-  onFileUpload = () => {
+  onFileUpload = (e) => {
+    e.preventDefault();
+    const { history, isUser } = this.props;
+    if (isUser) {
+      history.push('/u/search');
+    }
+    history.push('/u/search');
     this.setState({
       isSearched: true
     });

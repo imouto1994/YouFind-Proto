@@ -26,12 +26,13 @@ class YouTubeModal extends Component {
   };
 
   render() {
-    const { videoId } = this.props;
+    const { videoId, time } = this.props;
     const { showModal } = this.state;
     const opts = {
       width: '100%',
       playerVars: {
-        autoplay: 1
+        autoplay: 1,
+        start: time
       }
     };
 

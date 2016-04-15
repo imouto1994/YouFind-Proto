@@ -122,7 +122,7 @@ class Search extends Component {
         <Feedback toggle={ toggleFeedback } />
         {
           typeof selectedPreview !== 'undefined' &&
-          <YouTubeModal videoId={ videos[selectedPreview].id } toggle={ togglePreview } />
+          <YouTubeModal videoId={ videos[selectedPreview].id } toggle={ togglePreview } time={ videos[selectedPreview].start || 0 } />
         }
       </div>
     );

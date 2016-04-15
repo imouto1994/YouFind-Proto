@@ -21,6 +21,7 @@ export default {
         title: 'iPhone SE Review!',
         host: 'YouTube',
         date: '2 weeks ago',
+        start: 23,
         views: '904699'
       },
       {
@@ -29,6 +30,7 @@ export default {
         title: 'iPhone SE - Snooze Edition?',
         host: 'YouTube',
         date: '5 days ago',
+        start: 40,
         views: '2259021'
       },
       {
@@ -37,88 +39,63 @@ export default {
         title: 'iPhone SE: 5 Things Before Buying!',
         host: 'YouTube',
         date: '12 hours ago',
+        start: 123,
         views: '1322021'
       },
       {
-        id: 'Tx_lyy4-SeY',
+        id: '5IJWckL5L84',
         key: 3,
-        title: 'iPhone SE Review!',
+        title: 'HTC 10 Impressions!',
         host: 'YouTube',
-        date: '2 weeks ago',
-        views: '904699'
+        date: '2 months ago',
+        start: 5,
+        views: '904699122'
       },
       {
-        id: 'cYo2f7DLKX0',
+        id: 'ZvPxjhTOEgM',
         key: 4,
-        title: 'iPhone SE - Snooze Edition?',
+        title: 'Samsung Galaxy S7 Edge Review!',
         host: 'YouTube',
         date: '5 days ago',
-        views: '2259021'
+        start: 45,
+        views: '225901221'
       },
       {
-        id: '-ZWWvL7-tZ4',
+        id: '1sgeM6DsV40',
         key: 5,
-        title: 'iPhone SE: 5 Things Before Buying!',
+        title: 'Samsung Galaxy S7 Review!',
         host: 'YouTube',
         date: '12 hours ago',
-        views: '1322021'
+        start: 79,
+        views: '262422021'
       },
       {
-        id: 'Tx_lyy4-SeY',
+        id: 'FVi2olFqbGk',
         key: 6,
-        title: 'iPhone SE Review!',
+        title: 'this could fix the iPhone 7"s biggest problem',
         host: 'YouTube',
         date: '2 weeks ago',
-        views: '904699'
+        start: 89,
+        views: '9024699'
       },
       {
-        id: 'cYo2f7DLKX0',
+        id: '_tyhjr_f-Rw',
         key: 7,
-        title: 'iPhone SE - Snooze Edition?',
+        title: 'iPhone SE - Unboxing Every Color',
         host: 'YouTube',
-        date: '5 days ago',
-        views: '2259021'
+        date: '2 days ago',
+        start: 45,
+        views: '274259021'
       },
       {
-        id: '-ZWWvL7-tZ4',
+        id: 'owAWOSXvIjU',
         key: 8,
-        title: 'iPhone SE: 5 Things Before Buying!',
+        title: 'Reasons NOT to buy iPhone SE',
         host: 'YouTube',
         date: '12 hours ago',
-        views: '1322021'
-      },
-      {
-        id: 'Tx_lyy4-SeY',
-        key: 9,
-        title: 'iPhone SE Review!',
-        host: 'YouTube',
-        date: '2 weeks ago',
-        views: '904699'
-      },
-      {
-        id: 'cYo2f7DLKX0',
-        key: 10,
-        title: 'iPhone SE - Snooze Edition?',
-        host: 'YouTube',
-        date: '5 days ago',
-        views: '2259021'
-      },
-      {
-        id: '-ZWWvL7-tZ4',
-        key: 11,
-        title: 'iPhone SE: 5 Things Before Buying!',
-        host: 'YouTube',
-        date: '12 hours ago',
-        views: '1322021'
+        start: 34,
+        views: '132202112'
       }
     ];
-  },
-
-  getSelectedVideos() {
-    return [0, 1, 3, 5, 8, 10];
-  },
-
-  getActionVideos() {
-    return [[0, 1, 3], [5, 8], [10]];
   }
 };
