@@ -23,7 +23,8 @@ class App extends Component {
 
   state = {
     isMenuOpened: false,
-    isSearched: false
+    isSearched: false,
+    searchImage: undefined
   };
 
   componentDidMount() {
@@ -57,13 +58,17 @@ class App extends Component {
   onFileUpload = (e) => {
     e.preventDefault();
     const { history, isUser } = this.props;
-    if (isUser) {
-      history.push('/u/search');
-    }
-    history.push('/u/search');
-    this.setState({
-      isSearched: true
-    });
+    const reader = new FileReader();
+    reader.onload = event => {
+      this.setState({
+        searchImage: event.target.result,
+        isSearched: true
+      });
+      if (isUser) {
+        history.push('/u/search');
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   onUserPanelClick = () => {
@@ -138,7 +143,7 @@ class App extends Component {
 
   renderBody() {
     const { children, isUser } = this.props;
-    const { isSearched } = this.state;
+    const { isSearched, searchImage } = this.state;
     const contentClasses = [
       'container-fluid',
       `${CLASS_NAME}-content`
@@ -146,7 +151,7 @@ class App extends Component {
 
     return (
       <div className={ classnames(contentClasses) }>
-        { React.cloneElement(children, { isUser, isSearched }) }
+        { React.cloneElement(children, { isUser, isSearched, searchImage }) }
       </div>
     );
   }

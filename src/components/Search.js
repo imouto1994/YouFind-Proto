@@ -17,6 +17,7 @@ class Search extends Component {
   static propTypes= {
     isUser: PropTypes.bool,
     isSearched: PropTypes.bool,
+    searchImage: PropTypes.string,
     history: PropTypes.object
   };
 
@@ -96,7 +97,7 @@ class Search extends Component {
   };
 
   render() {
-    const { isSearched, isUser } = this.props;
+    const { isSearched, isUser, searchImage } = this.props;
     const { toggleFeedback, togglePreview, selectedPreview, videos } = this.state;
     if (!isSearched) {
       return this.renderEmpty();
@@ -104,6 +105,20 @@ class Search extends Component {
 
     return (
       <div className={ `${CLASS_NAME} ${CLASS_NAME}-results` }>
+        {
+          searchImage ?
+          <div>
+            <div className="yf-display-inline-block">
+              <img className={ `${CLASS_NAME}-image` } src={ searchImage } />
+            </div>
+            <div className="yf-display-inline-block yf-margin-left-15 yf-vertical-align-top">
+              <strong>Title: iPhone SE</strong>
+              <div>Image Size: 3000 x 1500</div>
+            </div>
+          </div>
+          : undefined
+        }
+        { searchImage ? <hr /> : undefined }
         { this.renderResultsHeader() }
         <hr />
         <div className="col-sm-offset-6 col-sm-6 yf-min-tablet-visible yf-margin-bottom-30">
@@ -114,7 +129,7 @@ class Search extends Component {
         {
           isUser &&
           <div className="clearfix">
-            <button onClick={ this.onActionTaken } className="btn btn-primary pull-right">
+            <button onClick={ this.onActionTaken } className="btn btn-primary btn-lg pull-right">
               TAKE ACTION
             </button>
           </div>
