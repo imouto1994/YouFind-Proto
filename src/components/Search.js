@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import classnames from 'classnames';
 import shuffle from 'lodash/shuffle';
 import Cookies from 'js-cookie';
 
@@ -111,6 +112,12 @@ class Search extends Component {
     if (!isSearched) {
       return this.renderEmpty();
     }
+    const classes = [
+      'col-xs-6 yf-min-tablet-visible yf-margin-bottom-30',
+      {
+        'col-xs-offset-6': !isUser
+      }
+    ];
 
     return (
       <div className={ `${CLASS_NAME} ${CLASS_NAME}-results` }>
@@ -141,7 +148,7 @@ class Search extends Component {
               </div>
             </div>
           }
-          <div className="col-xs-6 yf-min-tablet-visible yf-margin-bottom-30">
+          <div className={ classnames(classes) }>
             <h5 className={ `${CLASS_NAME}-results-header-title pull-right` }>Is this what you were looking for?</h5>
           </div>
         </div>
