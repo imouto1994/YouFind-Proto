@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import Cookies from 'js-cookie';
-import _ from 'lodash';
+import clone from 'lodash/clone';
 
 import Utility from '../utils';
 import VideoCard from './VideoCard';
@@ -29,13 +29,42 @@ class ActionSubmit extends Component {
         report: 'bulk',
         contact: 'bulk',
         request: 'bulk'
-      }
+      },
+      image: undefined,
+      images: Array.apply(null, new Array(actions['2'].length))
     };
   }
 
-  onUploadButtonClick = () => {
-    const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
+  onUploadButtonClick = (index) => {
+    let fileInput;
+    if (typeof index === 'undefined') {
+      fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
+    } else {
+      fileInput = ReactDOM.findDOMNode(this.refs[`fileInput${index}`]);
+    }
     fileInput.click();
+  };
+
+  onFileUpload = (e, index) => {
+    e.preventDefault();
+    const reader = new FileReader();
+    if (typeof index === 'undefined') {
+      reader.onload = event => {
+        this.setState({
+          image: event.target.result
+        });
+      };
+    } else {
+      reader.onload = event => {
+        const images = clone(this.state.images);
+        images[index] = event.target.result;
+        this.setState({
+          images
+        });
+      };
+    }
+
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   onNext = () => {
@@ -44,11 +73,19 @@ class ActionSubmit extends Component {
   };
 
   onRadioChange = (action, type) => {
-    const messageType = _.clone(this.state.messageType);
+    const messageType = clone(this.state.messageType);
     messageType[action] = type;
-    this.setState({
-      messageType
-    });
+    if (action === 'request') {
+      this.setState({
+        messageType,
+        image: undefined,
+        images: Array.apply(null, new Array(this.state.images.length))
+      });
+    } else {
+      this.setState({
+        messageType
+      });
+    }
   };
 
   render() {
@@ -88,12 +125,12 @@ class ActionSubmit extends Component {
           <label>
             <input type="radio" name="report"
               checked={ messageType === 'bulk' }
-              onClick={ () => this.onRadioChange('report', 'bulk') } /> Bulk Message
+              onChange={ () => this.onRadioChange('report', 'bulk') } /> Bulk Message
           </label>
           <label className="yf-margin-left-15">
             <input type="radio" name="report"
               checked={ messageType === 'custom' }
-              onClick={ () => this.onRadioChange('report', 'custom') } /> Custom Message
+              onChange={ () => this.onRadioChange('report', 'custom') } /> Custom Message
           </label>
         </div>
         {
@@ -121,6 +158,7 @@ class ActionSubmit extends Component {
         <h4>Message to Site</h4>
         <div className="form-group">
           <textarea id="feedback-report"
+            placeholder="Please leave your message here..."
             className={ `${CLASS_NAME}-textarea form-control` }
             rows="8" />
         </div>
@@ -148,12 +186,12 @@ class ActionSubmit extends Component {
           <label>
             <input type="radio" name="contact"
               checked={ messageType === 'bulk' }
-              onClick={ () => this.onRadioChange('contact', 'bulk') } /> Bulk Message
+              onChange={ () => this.onRadioChange('contact', 'bulk') } /> Bulk Message
           </label>
           <label className="yf-margin-left-15">
             <input type="radio" name="contact"
               checked={ messageType === 'custom' }
-              onClick={ () => this.onRadioChange('contact', 'custom') } /> Custom Message
+              onChange={ () => this.onRadioChange('contact', 'custom') } /> Custom Message
           </label>
         </div>
         {
@@ -181,6 +219,7 @@ class ActionSubmit extends Component {
         <h4>Message to Site</h4>
         <div className="form-group">
           <textarea id="feedback-contact"
+            placeholder="Please leave your message here..."
             className={ `${CLASS_NAME}-textarea form-control` }
             rows="8" />
         </div>
@@ -208,12 +247,12 @@ class ActionSubmit extends Component {
           <label>
             <input type="radio" name="request"
               checked={ messageType === 'bulk' }
-              onClick={ () => this.onRadioChange('request', 'bulk') } /> Bulk Message
+              onChange={ () => this.onRadioChange('request', 'bulk') } /> Bulk Message
           </label>
           <label className="yf-margin-left-15">
             <input type="radio" name="request"
               checked={ messageType === 'custom' }
-              onClick={ () => this.onRadioChange('request', 'custom') } /> Custom Message
+              onChange={ () => this.onRadioChange('request', 'custom') } /> Custom Message
           </label>
         </div>
         {
@@ -231,7 +270,7 @@ class ActionSubmit extends Component {
   }
 
   renderRequestBulk() {
-    const { requestVideos } = this.state;
+    const { requestVideos, image } = this.state;
     return (
       <div>
         <h4>Selected Videos</h4>
@@ -242,14 +281,28 @@ class ActionSubmit extends Component {
         <div>
           <input type="file"
             ref="fileInput"
-            style={ { display: 'none' } } />
-          <div className="btn btn-primary" onClick={ this.onUploadButtonClick }>
+            style={ { display: 'none' } }
+            onChange={ this.onFileUpload } />
+          <div className="btn btn-primary" onClick={ () => this.onUploadButtonClick() }>
             Upload Watermarked Image
           </div>
         </div>
+        {
+          image &&
+          <div className="yf-margin-top-30">
+            <div className="yf-display-inline-block">
+              <img className={ `${CLASS_NAME}-image` } src={ image } />
+            </div>
+            <div className="yf-display-inline-block yf-margin-left-15 yf-vertical-align-top">
+              <strong>Title: Watermark Image</strong>
+              <div>Image Size: 1500 x 900</div>
+            </div>
+          </div>
+        }
         <h4>Message to Owner</h4>
         <div className="form-group">
           <textarea id="feedback-request"
+            placeholder="Please leave your message here..."
             className={ `${CLASS_NAME}-textarea form-control` }
             rows="8" />
         </div>
@@ -284,6 +337,7 @@ class ActionSubmit extends Component {
         <div className="col-xs-12 col-sm-8">
           <div className="form-group">
             <textarea id={ `feedback-report-${index}` }
+              placeholder="Please leave your message here..."
               className={ `${CLASS_NAME}-textarea form-control` }
               rows="8" />
           </div>
@@ -301,6 +355,7 @@ class ActionSubmit extends Component {
         <div className="col-xs-12 col-sm-8">
           <div className="form-group">
             <textarea id={ `feedback-contact-${index}` }
+              placeholder="Please leave your message here..."
               className={ `${CLASS_NAME}-textarea form-control` }
               rows="8" />
           </div>
@@ -310,6 +365,8 @@ class ActionSubmit extends Component {
   }
 
   renderRequestVideoWithMessage(video, index) {
+    const image = this.state.images[index];
+
     return (
       <div className="yf-margin-bottom-30" key={ index }>
         <div className="row">
@@ -319,6 +376,7 @@ class ActionSubmit extends Component {
           <div className="col-xs-12 col-sm-8">
             <div className="form-group">
               <textarea id={ `feedback-request-${index}` }
+                placeholder="Please leave your message here..."
                 className={ `${CLASS_NAME}-textarea form-control` }
                 rows="8" />
             </div>
@@ -326,12 +384,25 @@ class ActionSubmit extends Component {
         </div>
         <div>
           <input type="file"
-            ref="fileInput"
-            style={ { display: 'none' } } />
-          <div className="btn btn-primary" onClick={ this.onUploadButtonClick }>
+            ref={ `fileInput${index}` }
+            style={ { display: 'none' } }
+            onChange={ e => this.onFileUpload(e, index) } />
+          <div className="btn btn-primary" onClick={ () => this.onUploadButtonClick(index) }>
             Upload Watermarked Image
           </div>
         </div>
+        {
+          image &&
+          <div className="yf-margin-top-30">
+            <div className="yf-display-inline-block">
+              <img className={ `${CLASS_NAME}-image` } src={ image } />
+            </div>
+            <div className="yf-display-inline-block yf-margin-left-15 yf-vertical-align-top">
+              <strong>Title: Watermark Image</strong>
+              <div>Image Size: 1500 x 900</div>
+            </div>
+          </div>
+        }
       </div>
     );
   }

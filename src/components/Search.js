@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
-import _ from 'lodash';
+import shuffle from 'lodash/shuffle';
 import Cookies from 'js-cookie';
 
 import Utility from '../utils';
@@ -58,24 +58,33 @@ class Search extends Component {
     });
   };
 
-  onFeedbackToggle = () => {
-    const { toggleFeedback } = this.state;
-    this.setState({
-      toggleFeedback: !toggleFeedback
-    });
+  onFeedbackToggle = (feedback, index) => {
+    const { toggleFeedback, videos } = this.state;
+    if (feedback) {
+      this.setState({
+        toggleFeedback: !toggleFeedback
+      });
+    } else {
+      const filteredVideos = videos.filter((video, i) => i !== index);
+      this.setState({
+        toggleFeedback: !toggleFeedback,
+        videos: filteredVideos
+      });
+    }
   };
 
   onOrderChange = (order) => {
+    const { videos } = this.state;
     const map = this.state.checkboxes.reduce((m, v, index) => {
       m[this.state.videos[index].key] = v;
       return m;
     }, {});
-    const videos = _.shuffle(videoResults);
+    const shuffledVideos = shuffle(videos);
     const checkboxes = videos.map(v => map[v.key]);
 
     this.setState({
       order,
-      videos,
+      videos: shuffledVideos,
       checkboxes
     });
   };
@@ -98,7 +107,7 @@ class Search extends Component {
 
   render() {
     const { isSearched, isUser, searchImage } = this.props;
-    const { toggleFeedback, togglePreview, selectedPreview, videos } = this.state;
+    const { toggleFeedback, checkboxAll, togglePreview, selectedPreview, videos, checkboxes } = this.state;
     if (!isSearched) {
       return this.renderEmpty();
     }
@@ -121,18 +130,29 @@ class Search extends Component {
         { searchImage ? <hr /> : undefined }
         { this.renderResultsHeader() }
         <hr />
-        <div className="col-sm-offset-6 col-sm-6 yf-min-tablet-visible yf-margin-bottom-30">
-          <h5 className={ `${CLASS_NAME}-results-header-title pull-right` }>Is this what you were looking for?</h5>
+        <div className="row">
+          {
+            isUser &&
+            <div className="col-xs-6">
+              <div className="checkbox">
+                <label>
+                  <input type="checkbox" checked={ checkboxAll } onChange={ this.onCheckboxAllChange } /> Select All
+                </label>
+              </div>
+            </div>
+          }
+          <div className="col-xs-6 yf-min-tablet-visible yf-margin-bottom-30">
+            <h5 className={ `${CLASS_NAME}-results-header-title pull-right` }>Is this what you were looking for?</h5>
+          </div>
         </div>
         { this.renderResults() }
-        { isUser && <hr /> }
         {
           isUser &&
-          <div className="clearfix">
-            <button onClick={ this.onActionTaken } className="btn btn-primary btn-lg pull-right">
-              TAKE ACTION
-            </button>
-          </div>
+          <button onClick={ this.onActionTaken }
+            className={ `${CLASS_NAME}-action btn btn-primary btn-lg pull-right` }
+            disabled={ checkboxes.filter(l => l).length === 0 }>
+            TAKE ACTION
+          </button>
         }
         <Feedback toggle={ toggleFeedback } />
         {
@@ -181,26 +201,15 @@ class Search extends Component {
   }
 
   renderResultsHeader() {
-    const { checkboxAll } = this.state;
-    const { isUser } = this.props;
-    const videoHeaderClassname = isUser
-      ? 'col-xs-11 col-sm-5'
-      : 'col-xs-12 col-sm-6';
+    const { videos } = this.state;
+    const videoHeaderClassname = 'col-xs-12 col-sm-6';
 
     return (
       <div className={ `row ${CLASS_NAME}-results-header` }>
-        {
-          isUser &&
-          <div className="col-xs-1 col-sm-1">
-            <div className="checkbox">
-              <label>
-                <input type="checkbox" checked={ checkboxAll } onChange={ this.onCheckboxAllChange } />
-              </label>
-            </div>
-          </div>
-        }
         <div className={ videoHeaderClassname }>
-          <h5 className={ `${CLASS_NAME}-results-header-title` }>Videos Found</h5>
+          <h5 className={ `${CLASS_NAME}-results-header-title` }>
+            { `${videos.length} Videos Found` }
+          </h5>
         </div>
         <div className="col-sm-6">
           { this.renderFilter() }
@@ -248,12 +257,16 @@ class Search extends Component {
         </div>
         <div className={ feedbackClassname }>
           <div className="col-xs-6">
-            <button className="btn btn-primary btn-block" onClick={ this.onFeedbackToggle }>
+            <button
+              className="btn btn-primary btn-block" onClick={ () => this.onFeedbackToggle(true, index) }
+              disabled={ checkboxes.filter(l => l).length > 1 }>
               YES
             </button>
           </div>
           <div className="col-xs-6">
-            <button className="btn btn-default btn-block" onClick={ this.onFeedbackToggle }>
+            <button
+              className="btn btn-default btn-block" onClick={ () => this.onFeedbackToggle(false, index) }
+              disabled={ checkboxes.filter(l => l).length > 1 }>
               NO
             </button>
           </div>

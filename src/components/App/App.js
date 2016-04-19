@@ -179,7 +179,7 @@ class App extends Component {
         <NavDropdown className={ classnames(dropDownClasses) }
           title={ this.renderUserAvatar() } id="registeredDropdown">
           <MenuItem eventKey="1" onClick={ this.onUserPanelClick }>
-            User Panel
+            User Profile
           </MenuItem>
           <MenuItem divider />
           <MenuItem eventKey="2" onClick={ this.onLogOutClick }>

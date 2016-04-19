@@ -19,6 +19,13 @@ class Feedback extends Component {
     }
   }
 
+  componentWillUnmount() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+      delete this.timeout;
+    }
+  }
+
   onCloseModal = () => {
     this.setState({ showModal: !this.state.showModal });
   };
@@ -27,6 +34,13 @@ class Feedback extends Component {
     this.setState({
       stage: index
     });
+    if (index === 2) {
+      this.timeout = setTimeout(() => {
+        this.setState({
+          showModal: false
+        });
+      }, 1500);
+    }
   };
 
   render() {
@@ -97,13 +111,8 @@ class Feedback extends Component {
       <Modal className={ `${CLASS_NAME} ${CLASS_NAME}-stage-2` }
         show={ showModal }
         onHide={ this.onCloseModal } >
-        <Modal.Header closeButton className={ `${CLASS_NAME}-stage-2-header` }>
-        </Modal.Header>
         <Modal.Body className={ `${CLASS_NAME}-body ${CLASS_NAME}-stage-2-body` }>
           <h3>Thank you for your feedback, we greatly value your input!</h3>
-          <button className="btn btn-primary btn-lg yf-margin-top-60" onClick={ this.onCloseModal }>
-            Close this window
-          </button>
         </Modal.Body>
       </Modal>
     );

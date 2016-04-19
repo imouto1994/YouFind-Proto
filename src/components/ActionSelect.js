@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
 import Cookies from 'js-cookie';
-import _ from 'lodash';
+import clone from 'lodash/clone';
 
 import Utility from '../utils';
 import VideoCard from './VideoCard';
@@ -30,7 +30,7 @@ class ActionSelect extends Component {
   }
 
   onActionChange = (index, actionIndex) => {
-    const actions = _.clone(this.state.actions);
+    const actions = clone(this.state.actions);
     actions[index] = actionIndex;
     this.setState({
       actions

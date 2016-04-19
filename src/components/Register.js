@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const CLASS_NAME = 'yf-register';
 
-class Login extends Component {
+class Register extends Component {
   static propTypes = {
     history: PropTypes.object
   }
@@ -11,7 +11,7 @@ class Login extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     const { history } = this.props;
-    history.pushState('/login');
+    history.push('/login');
   };
 
   render() {
@@ -43,14 +43,14 @@ class Login extends Component {
                   placeholder="Last Name" />
               </div>
               <div className="form-group">
-                <label className="control-label" htmlFor="email">Email</label>
+                <label className="control-label" htmlFor="email">Email (*)</label>
                 <input id="email"
                   type="email"
                   className="form-control"
                   placeholder="Email" />
               </div>
               <div className="form-group">
-                <label className="control-label" htmlFor="password">Password</label>
+                <label className="control-label" htmlFor="password">Password (*)</label>
                 <input id="password"
                   type="password"
                   className="form-control"
@@ -72,4 +72,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;
