@@ -11,7 +11,7 @@ class Register extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     const { history } = this.props;
-    history.push('/login');
+    history.push('/u/search');
   };
 
   render() {
