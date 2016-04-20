@@ -10,6 +10,11 @@ class Root extends Component {
     children: PropTypes.node
   };
 
+  componentWillUpdate() {
+    // Scroll to top after transition
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const { children } = this.props;
     return (
