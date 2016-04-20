@@ -10,7 +10,7 @@ class ActionResult extends Component {
         <div className={ `${CLASS_NAME}-content` }>
           <h3>SUCCESS :)</h3>
           <h4>We will keep you updated on the progress of your submissions</h4>
-          <h5>More Details Here</h5>
+          <h5 className="yf-margin-top-30">More Details Here</h5>
           <Link className="btn btn-primary" to="/u">
             View Your Profile
           </Link>

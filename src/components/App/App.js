@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 
 import Utility from '../../utils';
+import UploadModal from '../UploadModal';
 
 const CLASS_NAME = 'yf-app';
 
@@ -24,7 +25,8 @@ class App extends Component {
   state = {
     isMenuOpened: false,
     isSearched: false,
-    searchImage: undefined
+    searchImage: undefined,
+    toggleUploadModal: false
   };
 
   componentDidMount() {
@@ -49,28 +51,6 @@ class App extends Component {
     });
   };
 
-  onUploadButtonClick = (e) => {
-    e.preventDefault();
-    const fileInput = ReactDOM.findDOMNode(this.refs.fileInput);
-    fileInput.click();
-  };
-
-  onFileUpload = (e) => {
-    e.preventDefault();
-    const { history, isUser } = this.props;
-    const reader = new FileReader();
-    reader.onload = event => {
-      this.setState({
-        searchImage: event.target.result,
-        isSearched: true
-      });
-      if (isUser) {
-        history.push('/u/search');
-      }
-    };
-    reader.readAsDataURL(e.target.files[0]);
-  };
-
   onUserPanelClick = () => {
     const { history } = this.props;
     history.push('/u');
@@ -79,6 +59,25 @@ class App extends Component {
   onLogOutClick = () => {
     const { history } = this.props;
     history.push('/');
+  };
+
+  onUploadButtonClick = e => {
+    e.preventDefault();
+    this.setState({
+      toggleUploadModal: !this.state.toggleUploadModal
+    });
+  };
+
+  onImageSelected = img => {
+    const { history, isUser } = this.props;
+    console.log(img);
+    this.setState({
+      searchImage: img,
+      isSearched: true
+    });
+    if (isUser) {
+      history.push('/u/search');
+    }
   };
 
   render() {
@@ -197,6 +196,8 @@ class App extends Component {
   }
 
   renderSearchForm() {
+    const { toggleUploadModal } = this.state;
+
     return (
       <form onSubmit={ this.onSearchFormSubmit }
         className="navbar-form navbar-left"
@@ -218,6 +219,7 @@ class App extends Component {
               <button type="submit" className="btn btn-primary">
                 Search
               </button>
+              <UploadModal onImageSelected={ this.onImageSelected } toggle={ toggleUploadModal } />
             </div>
           </div>
         </div>
