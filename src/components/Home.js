@@ -9,18 +9,18 @@ class Home extends Component {
     return (
       <div className={ CLASS_NAME }>
         <div className={ `${CLASS_NAME}-selection` }>
-          <div className={ `${CLASS_NAME}-logo yf-margin-bottom-45` }>
+          <div className={ `${CLASS_NAME}-logo yf-margin-bottom-45 animated bounceInLeft` }>
             <img className={ `${CLASS_NAME}-logo-image` } src="http://i.imgur.com/4ewFqRE.png" />
             <span className={ `${CLASS_NAME}-logo-title yf-margin-left-15` }>YouFind</span>
           </div>
-          <h3>What kind of user are you?</h3>
+          <h3 className="animated bounceInRight">What kind of user are you?</h3>
           <div className="row yf-margin-top-30">
             <div className="col-sm-offset-2 col-sm-4">
               <OverlayTrigger placement="bottom"
                 overlay={
                   <Tooltip>Select this option if you're a web surfer looking to find videos with the help of images</Tooltip>
                 }>
-                <Link className={ `btn btn-primary btn-block btn-xlg ${CLASS_NAME}-casual` }
+                <Link className={ `btn btn-primary btn-block btn-xlg ${CLASS_NAME}-casual animated bounceInLeft` }
                   to="/search">
                   CASUAL
                 </Link>
@@ -31,7 +31,7 @@ class Home extends Component {
                 overlay={
                   <Tooltip>Select this option if you want to find videos infringing your image copyrights. We serve a diverse audience - digital marketers, photographers, artists, rights holders, and production managers are among the many we've helped so far!</Tooltip>
                 }>
-                <Link className={ `btn btn-primary btn-block btn-xlg ${CLASS_NAME}-pro` } to="/login">
+                <Link className={ `btn btn-primary btn-block btn-xlg ${CLASS_NAME}-pro animated bounceInRight` } to="/login">
                   PROFESSIONAL
                 </Link>
               </OverlayTrigger>

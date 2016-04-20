@@ -123,7 +123,7 @@ class Search extends Component {
       <div className={ `${CLASS_NAME} ${CLASS_NAME}-results` }>
         {
           searchImage ?
-          <div>
+          <div className="animated fadeInDown">
             <div className="yf-display-inline-block">
               <img className={ `${CLASS_NAME}-image` } src={ searchImage } />
             </div>
@@ -243,7 +243,7 @@ class Search extends Component {
       : 'col-xs-12 col-sm-4';
 
     return (
-      <div className={ `row ${CLASS_NAME}-result` } key={ index }>
+      <div className={ `row ${CLASS_NAME}-result animated fadeInLeft` } key={ index }>
         {
           isUser &&
           <div className="col-xs-1 col-sm-1">

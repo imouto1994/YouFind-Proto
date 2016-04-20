@@ -22,7 +22,8 @@ export default {
         host: 'YouTube',
         date: '2 weeks ago',
         start: 23,
-        views: '904699'
+        views: '904699',
+        status: 'Success'
       },
       {
         id: 'cYo2f7DLKX0',
@@ -49,7 +50,8 @@ export default {
         host: 'YouTube',
         date: '2 months ago',
         start: 5,
-        views: '904699122'
+        views: '904699122',
+        status: 'Success'
       },
       {
         id: 'ZvPxjhTOEgM',
@@ -67,7 +69,8 @@ export default {
         host: 'YouTube',
         date: '12 hours ago',
         start: 79,
-        views: '262422021'
+        views: '262422021',
+        status: 'Success'
       },
       {
         id: 'FVi2olFqbGk',
@@ -76,7 +79,8 @@ export default {
         host: 'YouTube',
         date: '2 weeks ago',
         start: 89,
-        views: '9024699'
+        views: '9024699',
+        status: 'Success'
       },
       {
         id: '_tyhjr_f-Rw',
@@ -85,7 +89,8 @@ export default {
         host: 'YouTube',
         date: '2 days ago',
         start: 45,
-        views: '274259021'
+        views: '274259021',
+        status: 'Success'
       },
       {
         id: 'owAWOSXvIjU',

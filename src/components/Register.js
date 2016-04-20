@@ -17,7 +17,7 @@ class Register extends Component {
   render() {
     return (
       <div className={ CLASS_NAME }>
-        <div className={ `${CLASS_NAME}-card panel` }>
+        <div className={ `${CLASS_NAME}-card panel animated bounceInUp` }>
           <div className={ `${CLASS_NAME}-card-heading panel-heading` }>
             <Link to="/">
               <img className={ `${CLASS_NAME}-card-heading-image` }
