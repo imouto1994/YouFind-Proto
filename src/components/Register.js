@@ -43,6 +43,13 @@ class Register extends Component {
                   placeholder="Last Name" />
               </div>
               <div className="form-group">
+                <label className="control-label" htmlFor="occ">Occupation</label>
+                <input id="occ"
+                  type="text"
+                  className="form-control"
+                  placeholder="Occupation" />
+              </div>
+              <div className="form-group">
                 <label className="control-label" htmlFor="email">Email (*)</label>
                 <input id="email"
                   type="email"
